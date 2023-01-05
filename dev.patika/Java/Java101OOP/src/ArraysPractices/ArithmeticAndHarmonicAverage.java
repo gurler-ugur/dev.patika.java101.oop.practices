@@ -1,8 +1,6 @@
-package AverageOfArray;
+package ArraysPractices;
 
-import java.util.Arrays;
-
-public class Test {
+public class ArithmeticAndHarmonicAverage {
     public static void main(String[] args) {
 
         int[][] matrix = new int[UtilityArray.fillArrayLengthRandom()][UtilityArray.fillArrayLengthRandom()];
