@@ -179,6 +179,38 @@ public class UtilityArray {
                 + "Closest Greater Number Than Given Number: " + closestGreaterNumber);
     }
 
+    static void drawLetterA (String[][] matrix) {
+        String star = "*";
+        String space = " ";
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (i == 0 || i == 4) {
+                    matrix[i][j] = star;
+                } else if (j == 0 || j == 5) {
+                    matrix[i][j] = star;
+                } else {
+                    matrix[i][j] = space;
+                }
+            }
+        }
+    }
+
+    static void drawLetterB (String[][] matrix) {
+        String star = "*";
+        String space = " ";
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if (i == 0 || i == 4 || i == 8) {
+                    matrix[i][j] = star;
+                } else if (j == 0 || j == 5) {
+                    matrix[i][j] = star;
+                } else {
+                    matrix[i][j] = space;
+                }
+            }
+        }
+    }
+
     static void printArray(int[][] matrix) {
         System.out.println("Row Size: " + matrix.length + "\n"
                 + "Column Size: " + matrix[0].length + "\n"
@@ -201,5 +233,14 @@ public class UtilityArray {
             System.out.print(a + " ");
         }
         System.out.println("\n" + "======================");
+    }
+
+    static void printArray(String[][] matrix) {
+        for (String[] row : matrix) {
+            for (String column : row) {
+                System.out.print(column);
+            }
+            System.out.println();
+        }
     }
 }
