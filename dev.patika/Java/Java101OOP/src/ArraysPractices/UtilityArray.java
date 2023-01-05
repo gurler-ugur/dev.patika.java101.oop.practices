@@ -8,8 +8,8 @@ public class UtilityArray {
         return (double) sumOfArray(matrix) / numberOfElementsArray(matrix);
     }
 
-    static double calculateAverageArray(int[] matrix) {
-        return (double) sumOfArray(matrix) / numberOfElementsArray(matrix);
+    static double calculateAverageArray(int[] list) {
+        return (double) sumOfArray(list) / numberOfElementsArray(list);
     }
 
     static double calculateHarmonicMeanArray(int[][] matrix) {
@@ -22,9 +22,9 @@ public class UtilityArray {
         return sum;
     }
 
-    static double calculateHarmonicMeanArray(int[] matrix) {
+    static double calculateHarmonicMeanArray(int[] list) {
         int sum = 0;
-        for (int a : matrix) {
+        for (int a : list) {
             sum += (a == 0 ? 0 : (1 / a));
         }
         return sum;
@@ -40,9 +40,9 @@ public class UtilityArray {
         return sum;
     }
 
-    static int sumOfArray(int[] matrix) {
+    static int sumOfArray(int[] list) {
         int sum = 0;
-        for (int a : matrix) {
+        for (int a : list) {
             sum += a;
         }
         return sum;
@@ -52,8 +52,8 @@ public class UtilityArray {
         return matrix.length * matrix[0].length;
     }
 
-    static int numberOfElementsArray(int[] matrix) {
-        return matrix.length;
+    static int numberOfElementsArray(int[] list) {
+        return list.length;
     }
 
     static void fillArrayNumbersRandom(int[][] matrix) {
@@ -64,9 +64,9 @@ public class UtilityArray {
         }
     }
 
-    static void fillArrayNumbersRandom(int[] matrix) {
-        for (int row = 0; row < matrix.length; row++) {
-            matrix[row] = (int) (Math.random() * 100);
+    static void fillArrayNumbersRandom(int[] list) {
+        for (int row = 0; row < list.length; row++) {
+            list[row] = (int) (Math.random() * 100);
         }
     }
 
@@ -88,9 +88,9 @@ public class UtilityArray {
         return minNumber;
     }
 
-    static int findMinNumberOfArray(int[] matrix) {
-        int minNumber = matrix[0];
-        for (int a : matrix) {
+    static int findMinNumberOfArray(int[] list) {
+        int minNumber = list[0];
+        for (int a : list) {
             minNumber = a < minNumber ? a : minNumber;
         }
         return minNumber;
@@ -106,9 +106,9 @@ public class UtilityArray {
         return maxNumber;
     }
 
-    static int findMaxNumberOfArray(int[] matrix) {
-        int maxNumber = matrix[0];
-        for (int a : matrix) {
+    static int findMaxNumberOfArray(int[] list) {
+        int maxNumber = list[0];
+        for (int a : list) {
             maxNumber = a > maxNumber ? a : maxNumber;
         }
         return maxNumber;
@@ -128,10 +128,10 @@ public class UtilityArray {
         return closestNumber;
     }
 
-    static int findClosestNumberToMax(int[] matrix) {
-        int maxNumber = findMaxNumberOfArray(matrix);
+    static int findClosestNumberToMax(int[] list) {
+        int maxNumber = findMaxNumberOfArray(list);
         int closestNumber = 0;
-        for (int a : matrix) {
+        for (int a : list) {
             if (a == maxNumber) {
                 continue;
             }
@@ -154,10 +154,10 @@ public class UtilityArray {
         return closestNumber;
     }
 
-    static int findClosestNumberToMin(int[] matrix) {
-        int minNumber = findMinNumberOfArray(matrix);
+    static int findClosestNumberToMin(int[] list) {
+        int minNumber = findMinNumberOfArray(list);
         int closestNumber = 0;
-        for (int a : matrix) {
+        for (int a : list) {
             if (a == minNumber) {
                 continue;
             }
@@ -166,20 +166,20 @@ public class UtilityArray {
         return closestNumber;
     }
 
-    static void findClosestNumbersToGivenNumber(int[] matrix, int number) {
+    static void findClosestNumbersToGivenNumber(int[] list, int number) {
         int closestLessNumber = 0, closestGreaterNumber = 0;
-        Arrays.sort(matrix);
-        for (int i = 1; i < matrix.length; i++) {
-            if (number <= matrix[i] && number >= matrix[i - 1]) {
-                closestLessNumber = matrix[i - 1];
-                closestGreaterNumber = matrix[i];
+        Arrays.sort(list);
+        for (int i = 1; i < list.length; i++) {
+            if (number <= list[i] && number >= list[i - 1]) {
+                closestLessNumber = list[i - 1];
+                closestGreaterNumber = list[i];
             }
         }
         System.out.println("Closest Less Number Than Given Number: " + closestLessNumber + "\n"
                 + "Closest Greater Number Than Given Number: " + closestGreaterNumber);
     }
 
-    static void drawLetterA (String[][] matrix) {
+    static void drawLetterA(String[][] matrix) {
         String star = "*";
         String space = " ";
         for (int i = 0; i < matrix.length; i++) {
@@ -195,7 +195,7 @@ public class UtilityArray {
         }
     }
 
-    static void drawLetterB (String[][] matrix) {
+    static void drawLetterB(String[][] matrix) {
         String star = "*";
         String space = " ";
         for (int i = 0; i < matrix.length; i++) {
@@ -209,6 +209,42 @@ public class UtilityArray {
                 }
             }
         }
+    }
+
+    static int[] findDuplicatedNumbers(int[] list) {
+        int[] duplicated = new int[list.length];
+        int index = 0;
+        for (int i = 0; i < list.length; i++) {
+            for (int j = 0; j < list.length; j++) {
+                if ((i != j) && (list[i] == list[j])) {
+                    if (!isListHas(duplicated, list[i])) {
+                        duplicated[index++] = list[i];
+                        break;
+                    }
+                }
+            }
+        }
+        return duplicated;
+    }
+
+    static int[] findEvenNumbers(int[] list) {
+        int[] evenNumbers = new int[list.length];
+        int index = 0;
+        for (int a: list){
+            if (a % 2 == 0) {
+                evenNumbers[index++] = a;
+            }
+        }
+        return evenNumbers;
+    }
+
+    static boolean isListHas(int[] list, int number) {
+        for (int i : list) {
+            if (i == number) {
+                return true;
+            }
+        }
+        return false;
     }
 
     static void printArray(int[][] matrix) {
@@ -225,11 +261,11 @@ public class UtilityArray {
         System.out.println("======================");
     }
 
-    static void printArray(int[] matrix) {
-        System.out.println("Row Size: " + matrix.length + "\n"
+    static void printArray(int[] list) {
+        System.out.println("Row Size: " + list.length + "\n"
                 + "======================");
         System.out.println("*** ARRAY ***");
-        for (int a : matrix) {
+        for (int a : list) {
             System.out.print(a + " ");
         }
         System.out.println("\n" + "======================");
