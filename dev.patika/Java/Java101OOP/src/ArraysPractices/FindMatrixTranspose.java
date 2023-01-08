@@ -7,8 +7,8 @@ public class FindMatrixTranspose {
 
         int[][] matrix = createMatrix(2,3);
         printMatrix(matrix);
-        int[][] transposeMatrix = transposeOfMatrix(matrix);
-        printMatrix(transposeMatrix);
+        int[][] transpose = transposeOfMatrix(matrix);
+        printMatrix(transpose);
 
     }
 
